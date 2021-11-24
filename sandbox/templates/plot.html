@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}plot{% endblock title %}
+{% block body %}
+
+   
+  {% autoescape on %}
+    {{ plot_div }}
+  {% endautoescape %}
+
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}data{% endblock title  %}
+{% block body  %}
+<div class='container'>
+<h1>Upload the CSV File</h1>
+<br />
+</div>
+
+<div class='container '>
+<div class="border p-4 shadow">
+<form action='' method='POST' class="ui form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+     <br />
+    <br />
+    <!--<botton type="submit" class="ui button primary">Confirm</botton>-->
+    <button type="submit" id="submit" class="btn btn-primary" name="submit" data-loading-text="Loading...">Upload</button>
+</form> 
+</div>
+</div>
+<br />
+<br />
+<div class="form-group">
+    <label for="csv_id">Select CSV File</label>
+    <select class="form-control" id="csv_id" name="csv_id">
+        {% for csv in queryset %}
+        <option value="{{csv.file_name}}">{{csv.file_name}}</option>
+        {% endfor %}
+    </select>    
+    <label for="column">Max</label>
+    <select class="form-control" id="csv_id" name="csv_id">
+        <option value="{{a}}">{{a}}</option>
+    </select>  
+    <label for="column">Min</label>
+    <select class="form-control" id="csv_id" name="csv_id">
+        <option value="{{b}}">{{b}}</option>
+    </select>     
+    <label for="column">Sum</label>
+    <select class="form-control" id="csv_id" name="csv_id">
+        <option value="{{c}}">{{c}}</option>
+    </select>     
+</div>
+
+<!--
+<form action="" method="post" name="upload_excel" enctype="multipart/form-data">
+   <div>
+      <div class="col-xs-6">
+         <label>Import CSV/Excel File:</label>
+         <input type="file" class="form-control" multiple name="filename" id="filename">
+         <br />
+         <button type="submit" id="submit" class="btn btn-primary" name="submit" data-loading-text="Loading...">Upload</button>
+      </div>
+   </div>
+</form>-->
+   
+{% endblock body %}
