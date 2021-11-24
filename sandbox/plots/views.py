@@ -31,7 +31,6 @@ def data(request):
         form.save()
         form = CsvModelForm()
         # obj=Csv
-        obj1 = Csv.objects.all()[0]
         obj = Csv.objects.get(activated=False)
         with open(obj.file_name.path, 'r') as f:
             reader = csv.reader(f)
@@ -72,8 +71,7 @@ def data(request):
 def demo_plot_view(request):
 
     #x_data = [0,1,2,3]
-    obj1 = Csv.objects.all()[0]
-    obj = Csv.objects.all()[0]
+    obj = Csv.objects.all().order_by('-uploaded')[0]
     with open(obj.file_name.path, 'r') as f:
         reader = csv.reader(f)
         d = []
